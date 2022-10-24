@@ -24,9 +24,9 @@ int main()
 		tries++;
 
 		if (guess != num)
-			cout << getResponseIncorrect() << "\n\n";
+			cout << getResponseIncorrect << "\n\n";
 		else if (guess == num)
-			cout << getResponseCorrect() << "\nYou got it in " << tries << " guesses!\n";
+			cout << getResponseCorrect << "\nYou got it in " << tries << " guesses!\n";
 		else if (tries == 20)
 			cout << getResponseLose;
 	} while (guess != num);
