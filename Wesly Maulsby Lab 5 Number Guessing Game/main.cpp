@@ -4,11 +4,12 @@
 using namespace std;
 
 
-
+//creates the functions that give the responses
 string getResponseIncorrect();
 string getResponseCorrect();
 string getResponseLose();
 
+//creates the variable of if the game continues or not.
 int playAgain;
 
 int main()
@@ -16,24 +17,26 @@ int main()
 
 	do
 	{
+		//initializes the guess count, the random number, and try count variables
 		int guess = 0;
 		int num = 0;
 		int tries = 0;
 
 		do
 		{
-			int playAgain = 1;
-			int num, guess, tries = 0;
+			
+			int num, guess, tries = 0;	//im actually not sure why this is here, the internet told me to do this but??
 			srand(time(0)); //seed random number generator
 			num = rand() % 100 + 1; // random number between 1 and 100
 			cout << "Guess My Number Game\n\n";
 
-			cout << num << endl;
+			cout << num << endl;  //prints the number to guess for testing purposes, will be removed later
 
-			cout << "Enter a guess between 1 and 100 : ";
+			cout << "Enter a guess between 1 and 100 : "; //inputs the guess
 			cin >> guess;
-			tries++;
-
+			tries++; //adds to the try count
+			
+			//determine if the guess was correct, incorrect, or if you are out of tries
 			if (guess != num && tries < 20)
 				cout << getResponseIncorrect() << "\n\n";
 			else if (guess == num && tries < 20)
@@ -43,7 +46,8 @@ int main()
 
 		} while (guess != num && tries <= 20);
 
-		cout << "Do you want to play again, enter 1 for yes, enter 2 for no: ";
+		//determines if the user wants to play again or exit the game.
+		cout << "Do you want to play again, enter 1 for yes, enter any other number for no: ";
 		cin >> playAgain;
 	} while (playAgain == 1);
 
@@ -51,6 +55,7 @@ int main()
 	return 0;
 }
 
+//gets the response for incorrect
 string getResponseIncorrect()
 {
 	string response = "";
@@ -82,6 +87,7 @@ string getResponseIncorrect()
 
 }
 
+//gets the response for correct
 string getResponseCorrect()
 {
 	string response = "";
@@ -114,6 +120,7 @@ string getResponseCorrect()
 
 }
 
+//gets the response for lose
 string getResponseLose()
 {
 	string response = "";
