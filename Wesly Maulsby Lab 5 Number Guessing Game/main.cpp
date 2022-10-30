@@ -5,36 +5,53 @@ using namespace std;
 
 
 
-void getResponseIncorrect();
-void getResponseCorrect();
-void getResponseLose();
+string getResponseIncorrect();
+string getResponseCorrect();
+string getResponseLose();
 
+int playAgain;
 
 int main()
 {
-	int num, guess, tries = 0;
-	srand(time(0)); //seed random number generator
-	num = rand() % 100 + 1; // random number between 1 and 100
-	cout << "Guess My Number Game\n\n";
 
 	do
 	{
-		cout << "Enter a guess between 1 and 100 : ";
-		cin >> guess;
-		tries++;
+		int guess = 0;
+		int num = 0;
+		int tries = 0;
 
-		if (guess != num)
-			cout << getResponseIncorrect << "\n\n";
-		else if (guess == num)
-			cout << getResponseCorrect << "\nYou got it in " << tries << " guesses!\n";
-		else if (tries == 20)
-			cout << getResponseLose;
-	} while (guess != num);
+		do
+		{
+			int playAgain = 1;
+			int num, guess, tries = 0;
+			srand(time(0)); //seed random number generator
+			num = rand() % 100 + 1; // random number between 1 and 100
+			cout << "Guess My Number Game\n\n";
+
+			cout << num << endl;
+
+			cout << "Enter a guess between 1 and 100 : ";
+			cin >> guess;
+			tries++;
+
+			if (guess != num && tries < 20)
+				cout << getResponseIncorrect() << "\n\n";
+			else if (guess == num && tries < 20)
+				cout << getResponseCorrect() << "\nYou got it in " << tries << " guesses!\n";
+			else if (tries == 20)
+				cout << getResponseLose();
+
+		} while (guess != num && tries <= 20);
+
+		cout << "Do you want to play again, enter 1 for yes, enter 2 for no: ";
+		cin >> playAgain;
+	} while (playAgain == 1);
+
 
 	return 0;
 }
 
-void getResponseIncorrect()
+string getResponseIncorrect()
 {
 	string response = "";
 	srand(time(0)); //seed random number generator
@@ -65,11 +82,12 @@ void getResponseIncorrect()
 
 }
 
-void getResponseCorrect()
+string getResponseCorrect()
 {
 	string response = "";
 	srand(time(0)); //seed random number generator
 	int responseNum = rand() % 10 + 1; // random number between 1 and 10
+
 
 	if (responseNum == 1)
 		response = "Correct!";
@@ -86,7 +104,7 @@ void getResponseCorrect()
 	else if (responseNum == 7)
 		response = "Yes Sir!";
 	else if (responseNum == 8)
-		response = "You're right!";
+		response = "https://www.youtube.com/watch?v=OgZzUJud3Q4";
 	else if (responseNum == 9)
 		response = "Good job Chief!";
 	else if (responseNum == 10)
@@ -96,7 +114,7 @@ void getResponseCorrect()
 
 }
 
-void getResponseLose()
+string getResponseLose()
 {
 	string response = "";
 	srand(time(0)); //seed random number generator
@@ -115,7 +133,7 @@ void getResponseLose()
 	else if (responseNum == 6)
 		response = "*The Price is Right Failure soud*";
 	else if (responseNum == 7)
-		response = "Whelp, you tried!";
+		response = "https://www.youtube.com/watch?v=OgZzUJud3Q4";
 	else if (responseNum == 8)
 		response = "Your lack of correct guesses disturbs me";
 	else if (responseNum == 9)
