@@ -62,6 +62,7 @@ int main()
 		cin >> playAgain;
 	} while (playAgain == 1);
 
+	//prints the wins and losses
 	cout << endl << "WINS: " << wins << endl << "LOSSES: " << losses;
 
 	return 0;
