@@ -1,3 +1,11 @@
+/***************************
+Wesly Maulsby
+C++ Fall 2022
+Lab 5
+Number Guessing Game
+Create a number guessing game
+*****************************/
+
 #include <iostream>
 
 #include <cstdlib>
